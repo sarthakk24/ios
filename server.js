@@ -23,12 +23,6 @@ async function fetchData(category) {
   }
 }
 
-function generateRandomNumber() {
-  // Generate a random number between 20 and 35 (inclusive) with one decimal place
-  const randomNumber = (Math.floor(Math.random() * 16) + 20) / 10;
-  return randomNumber;
-}
-
 // Function to format and save data to JSON file
 function saveToJson(data, category) {
   if (!data || !data.items || data.items.length === 0) {
@@ -52,7 +46,7 @@ function saveToJson(data, category) {
     const bookCount = Math.floor(Math.random() * 8) + 3;
 
     const formattedDate = moment(book.publishedDate).format('D/M/YYYY, h:mm A');
-    const bookRating = book.averageRating || generateRandomNumber();
+    const bookRating = parseInt(book.averageRating) || 3;
     let link = Object.values(book.imageLinks)[0];
 
     if (link.startsWith('http://')) {
